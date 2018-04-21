@@ -7,3 +7,5 @@ scikit-learn
 python-bittrex
 requests
 pytz
+sphinxcontrib-napoleon
+
