@@ -1,9 +1,10 @@
 .. image:: https://i.imgur.com/EqWwNDn.png
     :target: https://github.com/Dodo33/alchemist-lib
-    :width: 212px
+    :width: 50%
     :align: center
     :alt: Alchemist
 
+Alchemist_lib
 *************
 
 
