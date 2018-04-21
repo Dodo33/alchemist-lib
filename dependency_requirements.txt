@@ -1,0 +1,2 @@
+https://github.com/femtotrader/pandas_talib.git
+https://github.com/s4w3d0ff/python-poloniex/archive/v0.4.7.zip

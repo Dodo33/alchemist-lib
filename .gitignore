@@ -1,0 +1,9 @@
+build/
+dist/
+alchemist_lib.egg-info/
+
+docs/build
+examples/*.log
+
+TODO.txt
+

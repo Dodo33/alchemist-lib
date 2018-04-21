@@ -1,0 +1,9 @@
+pandas
+numpy
+sqlalchemy
+sqlalchemy-utils
+apscheduler
+scikit-learn
+python-bittrex
+requests
+pytz
