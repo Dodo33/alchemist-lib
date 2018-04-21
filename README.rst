@@ -1,6 +1,7 @@
 .. image:: https://i.imgur.com/EqWwNDn.png
     :target: https://github.com/Dodo33/alchemist-lib
-    :width: 50%
+    :width: 300px
+    :height: 150px
     :align: center
     :alt: Alchemist
 
