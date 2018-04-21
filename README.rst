@@ -22,7 +22,7 @@ Features
  - Most common technical analysis indicators already integrated.
  - Execute orders on the most famous exchanges.
  - Possibility to visualize the asset allocation and the portfolio value charts for every strategy thanks to `alchemist-view <https://github.com/Dodo33/alchemist-view>`_.
- - Fully documented and hosted on `readthedocs <http://alchemist-lib.readthedocs.io/en/latest/install.html>`_.
+ - Fully documented and hosted on `readthedocs <http://alchemist-lib.readthedocs.io/en/latest/index.html#>`_.
  
 
 Supported Exchanges
