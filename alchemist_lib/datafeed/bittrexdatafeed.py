@@ -115,8 +115,6 @@ class BittrexDataFeed(OhlcvBaseClass):
         while(True):
             if market_summaries["result"] == None or market_summaries["success"] == False:
                 logging.warning("Bittrex api result is None or success is False. get_last_price() method.")
-                print("BITTREX_API_RETURN: ", market_summaries, "\n")
-                raise
                 time.sleep(60)
                 
                 #return pd.DataFrame(data = {"asset" : assets, "last_price" : Decimal(0)}, columns = ["asset", "last_price"]).set_index("asset")

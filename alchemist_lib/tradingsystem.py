@@ -116,7 +116,6 @@ class TradingSystem():
             print(utils.now(), ": Trading system already present.")
 
             self.session.query(Ts).filter(Ts.ts_name == self.name).update({"datetime_added" : ts.datetime_added,
-                                                                           "aum" : ts.aum,
                                                                            "ptf_type" : ts.ptf_type
                                                                            })
             self.session.commit()
