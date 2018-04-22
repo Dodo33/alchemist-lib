@@ -1,11 +1,9 @@
 
 """
-
 Author: Carniel Giorgio
 
 Strategy description:
 Hold a portfolio composed by top 5 assets by volume whose EMA 10 is above the EMA 21. Rebalance it every hour.
-
 """
 
 from alchemist_lib.portfolio import LongsOnlyPortfolio

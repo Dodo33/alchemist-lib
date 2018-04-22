@@ -1,11 +1,9 @@
 
 """
-
 Author: Carniel Giorgio
 
 Strategy description:
 Hold a portfolio equally composed by Ethereum and BitcoinCash.
-
 """
 
 from alchemist_lib.portfolio import LongsOnlyPortfolio
@@ -43,12 +41,3 @@ algo = TradingSystem(name = "BuyAndHold",
                                              secret_key = "SECRETKEY"),
                      paper_trading = True)
 algo.run(delay = "15M", frequency = 1)
-
-
-
-
-
-
-
-
-    
