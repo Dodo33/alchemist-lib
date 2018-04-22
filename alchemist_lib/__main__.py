@@ -20,7 +20,8 @@ def main():
     
     parsed_args = parser.parse_args()
 
-    path = os.path.join(os.path.dirname(__file__), "..")
+    #path = os.path.join(os.path.dirname(__file__), "..")
+    path = os.path.dirname(__file__)
     
     config = configparser.ConfigParser()
     

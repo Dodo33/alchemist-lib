@@ -33,6 +33,10 @@ A more detailed guide can be found on `Digital Ocean <https://www.digitalocean.c
 Installing MySQL can be done by runnung the following command.
 ::
     $ sudo apt-get install mysql-server
+
+The MySQL/Python connector can be installed with:
+::
+    $ sudo apt-get install python3-mysql.connector
     
 
 Installing alchemist_lib
@@ -42,7 +46,7 @@ Installing with ``pip``:
 ~~~~~~~~~~~~~~~~~~~~~~~~
 If `python3-pip <https://en.wikipedia.org/wiki/Pip_(package_manager)>`_ is already installed::
         
-    $ pip3 install alchemist_lib
+    $ sudo pip3 install alchemist_lib
         
 If you don't have pip installed, you can easily install it by downloading and running `get-pip.py <https://bootstrap.pypa.io/get-pip.py>`_.
     

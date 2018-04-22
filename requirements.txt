@@ -1,11 +1,11 @@
-pandas
-numpy
 sqlalchemy
 sqlalchemy-utils
 apscheduler
-scikit-learn
 python-bittrex
 requests
 pytz
 sphinxcontrib-napoleon
-
+scipy
+pandas
+numpy
+scikit-learn

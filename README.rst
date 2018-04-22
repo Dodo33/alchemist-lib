@@ -43,29 +43,7 @@ Requirements
 Installation
 ============
 
-Installing with ``pip``:
-------------------------
-If python3-pip is already installed::
-        
-    $ pip3 install alchemist_lib
-        
-If you don't have pip installed, you can easily install it by downloading and running `get-pip.py <https://bootstrap.pypa.io/get-pip.py>`_.
-    
-Cloning the repository with ``git``:
-------------------------------------
-If git is already installed::
-        
-    $ git clone https://github.com/Dodo33/alchemist-lib
-    $ cd alchemist-lib
-    $ python3 setup.py install
-
-
-Important
----------
-After the installation it's important to specify mysql credentials::
-
-    $ sudo alchemist populate -l "hostname" -u "username" -p "password" -d "database_name"
-
+See the `installing documentation <http://alchemist-lib.readthedocs.io/en/latest/install.html>`_.
 
 
 Code example

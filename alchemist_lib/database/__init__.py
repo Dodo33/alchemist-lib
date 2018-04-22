@@ -16,7 +16,7 @@ PASSWORD = None
 DB_NAME = None
     
 config = configparser.ConfigParser()
-path = os.path.join(os.path.dirname(__file__), "../..")
+path = os.path.join(os.path.dirname(__file__), "..")
 filename = config.read(path + "/config.ini")
 
 sections = config.sections()
