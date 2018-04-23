@@ -91,6 +91,16 @@ Strategy description:
     algo.run(delay = "15M", frequency = 1)
 
 
+Screenshot
+----------
+
+.. image:: https://i.imgur.com/G3p1IeZ.png
+    :target: https://github.com/Dodo33/alchemist-lib
+    :width: 300px
+    :height: 150px
+    :align: center
+    :alt: BuyAndHold example
+
 
 Basic concepts
 ==============
