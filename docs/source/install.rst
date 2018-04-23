@@ -47,6 +47,8 @@ Installing with ``pip``:
 If `python3-pip <https://en.wikipedia.org/wiki/Pip_(package_manager)>`_ is already installed::
         
     $ sudo pip3 install alchemist_lib
+    $ sudo pip3 install git+https://github.com/femtotrader/pandas_talib.git
+    $ sudo pip3 install https://github.com/s4w3d0ff/python-poloniex/archive/v0.4.7.zip
         
 If you don't have pip installed, you can easily install it by downloading and running `get-pip.py <https://bootstrap.pypa.io/get-pip.py>`_.
     
@@ -57,7 +59,13 @@ If `git <https://en.wikipedia.org/wiki/Git>`_ is already installed::
     $ git clone https://github.com/Dodo33/alchemist-lib
     $ cd alchemist-lib
     $ python3 setup.py install
+    
+    $ sudo pip3 install git+https://github.com/femtotrader/pandas_talib.git
+    $ sudo pip3 install https://github.com/s4w3d0ff/python-poloniex/archive/v0.4.7.zip
 
+
+Important
+---------
 
 After the installation it's important to specify mysql credentials::
 
