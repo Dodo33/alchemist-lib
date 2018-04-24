@@ -1,3 +1,4 @@
+setuptools
 sqlalchemy
 apscheduler
 python-bittrex

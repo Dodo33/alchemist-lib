@@ -55,8 +55,6 @@ class PortfolioBaseClass(ABC):
         Return:
             new_ptf (list[alchemist_lib.database.ptf_allocation.PtfAllocation]): List of PtfAllocation to execute in order to get the ideal portfolio.
 
-        Todo:
-            Rebalance only if the deviation is larger than a value.
         """
 
         curr_ptf = utils.to_list(curr_ptf)
