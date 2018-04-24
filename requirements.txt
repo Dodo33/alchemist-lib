@@ -1,5 +1,4 @@
 sqlalchemy
-sqlalchemy-utils
 apscheduler
 python-bittrex
 requests
