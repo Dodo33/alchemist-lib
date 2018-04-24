@@ -4,8 +4,6 @@ import numpy as np
 
 import pandas_talib
 
-from sklearn import linear_model
-
 from sqlalchemy import desc
 
 from decimal import Decimal
@@ -26,15 +24,17 @@ import warnings
 warnings.filterwarnings("ignore")
 
 
+def lin_reg(vals, index):
+    # y = mx + q
+    #https://docs.scipy.org/doc/numpy-1.14.0/reference/generated/numpy.linalg.lstsq.html
+    #x = index
+    #y = vals
 
-def lin_reg(X, y):
-    X = X.reshape((len(X), 1))
-    y = y.reshape((len(y), 1))
-
-    regr = linear_model.LinearRegression()
-    regr.fit(y, X)
+    A = np.vstack([index, np.ones(len(index))]).T
     
-    return Decimal(regr.coef_[0][0])
+    m, q = np.linalg.lstsq(A, vals)[0]
+
+    return Decimal(m)
 
 
 class Factor():
@@ -96,15 +96,22 @@ class Factor():
         
         if field == None:
             field = list(val_df.columns)[0]
-            
+        
         main_df = pd.DataFrame(columns = ["asset", "LinearRegression"]).set_index(keys = ["asset"])
         for asset in val_df.index.levels[0]:
             df = val_df.loc[asset]
+            df = df.sort_index(level = 0, ascending = False)
+            df = df.head(window_length)
 
-            X = np.array([float(price) for price in df[field]])
-            y = np.array(range(len(X)))
+            vals = np.array([])
+            index = np.array([])
+            i = 0
+            for price in df[field].tolist()[::-1]:
+                vals = np.append(vals, float(price))
+                index = np.append(index, i)
+                i += 1
 
-            main_df.loc[asset, "LinearRegression"] = lin_reg(X, y)
+            main_df.loc[asset, "LinearRegression"] = lin_reg(vals = vals, index = index)
 
                          
         return main_df

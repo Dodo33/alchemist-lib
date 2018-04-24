@@ -20,6 +20,7 @@ session = Session()
 fct = Factor(session = session)
 
 assets = session.query(Asset).filter(or_(Asset.ticker == "BCH", Asset.ticker == "ETH", Asset.ticker == "XZC")).all()
+
 print("All assets: ", utils.print_list(assets))
 print("\n")
 
@@ -27,8 +28,8 @@ hist = fct.history(assets, "*", "1D", 30)
 print("History: ", hist)
 print("\n")
 
-reg = fct.LinearRegression(hist, 3, field = "close")
-print("Regression: ", reg)
+reg = fct.LinearRegression(hist, 5, field = "close")
+print("Regression 5: ", reg)
 print("\n")
 
 ma = fct.MovingAverage(hist["close"], 3)
