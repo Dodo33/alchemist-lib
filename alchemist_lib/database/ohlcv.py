@@ -10,10 +10,11 @@ class Ohlcv(Base):
     """
     Map class for table ohlcv.
 
-        - **ohlcv_datetime**: DateTime, primary_key.
-        - **timeframe_id**: String(4), not null, primary_key.
-        - **ticker**: String(16), not null, primary_key, foreign_key(asset.ticker).
-        - **instrument_id**: Integer, not null, primary_key, foreign_key(asset.instrument_id).
+        - **ohlcv_id**: Integer, primary key.
+        - **ohlcv_datetime**: DateTime.
+        - **timeframe_id**: String(4), not null.
+        - **ticker**: String(16), not null, foreign_key(asset.ticker).
+        - **instrument_id**: Integer, not null, foreign_key(asset.instrument_id).
         - **open**: Float(20, 8), not null.
         - **high**: Float(20, 8), not null.
         - **low**: Float(20, 8), not null.
@@ -27,10 +28,11 @@ class Ohlcv(Base):
     __tablename__ = "ohlcv"
     __table_args__ = (ForeignKeyConstraint(["ticker", "instrument_id"], ["asset.ticker", "asset.instrument_id"], ondelete = "cascade"), )
 
-    ohlcv_datetime = Column(DateTime, primary_key = True)
-    timeframe_id = Column(String(4), nullable = False, primary_key = True)
-    ticker = Column(String(16), nullable = False, primary_key = True)
-    instrument_id = Column(Integer, nullable = False, primary_key = True)
+    ohlcv_id = Column(Integer, primary_key = True)
+    ohlcv_datetime = Column(DateTime)
+    timeframe_id = Column(String(4), nullable = False)
+    ticker = Column(String(16), nullable = False)
+    instrument_id = Column(Integer, nullable = False)
     
     open = Column(Float(precision = 20, scale = 8, asdecimal = True), nullable = True)
     high = Column(Float(precision = 20, scale = 8, asdecimal = True), nullable = True)
