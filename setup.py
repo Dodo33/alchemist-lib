@@ -20,7 +20,7 @@ def parse_requirements(filename):
 
 
 setup(name = 'alchemist_lib',
-      version = '0.7',
+      version = '0.8',
       description = 'Automatic trading library for cryptocurrencies.',
       long_description = read("README.rst"),
       url = 'https://github.com/Dodo33/alchemist-lib',

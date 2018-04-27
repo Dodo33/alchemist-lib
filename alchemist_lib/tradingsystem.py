@@ -318,6 +318,7 @@ class TradingSystem():
                 new_aum += (abs(alloc.amount) * last_price.loc[alloc.asset, "last_price"])
 
         logging.debug("The new aum is {}".format(new_aum))
+        print(utils.now(), "Assets under management: {}".format(new_aum))
         
         self.session.query(Ts).filter(Ts.ts_name == self.name).update({"aum" : new_aum})
         self.session.commit()
