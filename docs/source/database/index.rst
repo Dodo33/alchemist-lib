@@ -2,13 +2,13 @@ Database
 ========
 
 
-E/R Diagram
+UML Diagram
 ____________
 
-.. image:: https://i.imgur.com/7vt9uqT.png
-    :target: https://imgur.com/a/76XZC
+.. image:: https://i.imgur.com/nzEU0GT.png
+    :target: https://i.imgur.com/nzEU0GT.png
     :align: center
-    :alt: E/R Diagram
+    :alt: UML diagram
 
 
 
