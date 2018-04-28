@@ -1,4 +1,4 @@
-from sqlalchemy import String, ForeignKey, DateTime, Float, Integer, Column, ForeignKeyConstraint
+from sqlalchemy import String, ForeignKey, DateTime, Float, Integer, Column, ForeignKeyConstraint, UniqueConstraint
 from sqlalchemy.orm import relationship
 
 from . import Base
@@ -26,7 +26,10 @@ class Ohlcv(Base):
     """
     
     __tablename__ = "ohlcv"
-    __table_args__ = (ForeignKeyConstraint(["ticker", "instrument_id"], ["asset.ticker", "asset.instrument_id"], ondelete = "cascade"), )
+    __table_args__ = (ForeignKeyConstraint(["ticker", "instrument_id"], ["asset.ticker", "asset.instrument_id"], ondelete = "cascade"), UniqueConstraint("ohlcv_datetime",
+                                                                                                                                                         "timeframe_id",
+                                                                                                                                                         "ticker",
+                                                                                                                                                         "instrument_id"), )
 
     ohlcv_id = Column(Integer, primary_key = True)
     ohlcv_datetime = Column(DateTime)
