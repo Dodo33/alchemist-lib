@@ -7,7 +7,7 @@ Hold a portfolio composed by top 3 assets based on proximity to zero of the line
 
 Explanation:
 The following strategy will analyse the trend for every cryptocurrency traded on Poloniex based on the slope of the linear regression.
-It buys the top 5 assets whose slope is closed to zero. The more the slope is close to zero, the more weight the asset gets within the portfolio.
+It buys the top 3 assets whose slope is closed to zero. The more the slope is close to zero, the more weight the asset gets within the portfolio.
 The procedure is repeated every 15 minutes.
 """
 
