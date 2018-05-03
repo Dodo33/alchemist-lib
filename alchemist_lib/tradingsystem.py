@@ -225,10 +225,10 @@ class TradingSystem():
             raise Exception("The handle_data function must return a pandas.DataFrame!")
 
         if "asset" not in list(data.index.names):
-            raise Exception("The set_weight function must have the index called 'asset'!")
+            raise Exception("The handle_data function must have the index called 'asset'!")
         
         if "alpha" not in data.columns:
-            raise Exception("The set_weight function must have a column called 'alpha'!")
+            raise Exception("The handle_data function must have a column called 'alpha'!")
 
         data.dropna(inplace = True)
 
