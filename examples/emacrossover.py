@@ -16,6 +16,7 @@ import alchemist_lib.exchange as exch
 
 def set_weights(df):
     alphas_sum = df["alpha"].sum()
+    df["weight"] = 0
     for asset, alpha in zip(df.index.values, df["alpha"]):
         df.loc[asset, "weight"] = alpha / alphas_sum
         
