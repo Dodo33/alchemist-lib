@@ -165,12 +165,18 @@ class Factor():
         
         if field == None:
             field = list(df.columns)[0]
+
+        logging.debug(" ---------- ExponentialMovingAverage ---------- ")
+        logging.debug("Field: {}".format(field))
         
         main_df = pd.DataFrame(columns = ["asset", "ExponentialMovingAverage"]).set_index(keys = ["asset"])
         for asset in df.index.levels[0]:
+            logging.debug(" --- {} --- ".format(asset.ticker))
             vals = df.loc[asset]
             vals = vals.sort_index(level = 0, ascending = True)
+            logging.debug("vals: {}".format(vals))
             ema = pandas_talib.EMA(df = vals, n = window_length, price = field)
+            logging.debug("ema: {}".format(ema))
             main_df.loc[asset, "ExponentialMovingAverage"] = ema.tail(1)["EMA_{}".format(window_length)].values[0]
             
         return main_df

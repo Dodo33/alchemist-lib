@@ -154,7 +154,7 @@ class TradingSystem():
         return weights
 
     
-    def on_market_open(self, timeframe, frequency):
+    def on_market_open(self, timeframe, frequency, universe):
 
         """
         Save new data and call the rebalance function.
@@ -163,15 +163,19 @@ class TradingSystem():
             timeframe (str): The timeframe we want to collect informations about for every asset in the universe.
             frequency (int): Frequency of rebalancing.
         """
+
+        logging.info("----------------------------------------")
+        print("----------------------------------------")
+        
         start_time = time.time()
-        datafeed.save_last_ohlcv(session = self.session, assets = self.select_universe(), timeframe = timeframe)
+        datafeed.save_last_ohlcv(session = self.session, assets = universe, timeframe = timeframe)
         end_time = time.time()
 
         delta_time = round(end_time - start_time, 2)
         logging.info("Last OHLCV data retrived in {} seconds.".format(delta_time))
         print(utils.now(), ": Last OHLCV data retrived in {} seconds.".format(delta_time))
         
-        self.rebalance(alphas = self.handle_data(), orders_type = order.MARKET, frequency = frequency)
+        self.rebalance(alphas = self.handle_data(universe = universe), orders_type = order.MARKET, frequency = frequency)
 
 
     def select_universe(self):
@@ -203,7 +207,7 @@ class TradingSystem():
         return utils.to_list(universe)
     
 
-    def handle_data(self):
+    def handle_data(self, universe):
 
         """
         Call the _handle_data callable attribute if it's not None.
@@ -219,7 +223,7 @@ class TradingSystem():
 
         start_time = time.time()
         
-        data = self._handle_data(session = self.session, universe = self.select_universe())
+        data = self._handle_data(session = self.session, universe = universe)
 
         if isinstance(data, pd.DataFrame) == False:
             raise Exception("The handle_data function must return a pandas.DataFrame!")
@@ -346,9 +350,10 @@ class TradingSystem():
         
         assert frequency > 0, "The frequency must be > 0."
 
+        universe = self.select_universe()
         
         instrument_timetable = {}
-        for asset in self.select_universe():
+        for asset in universe:
             if asset.instrument not in list(instrument_timetable.keys()):
                 instrument_timetable[asset.instrument] = asset.exchanges[0].timetable
         
@@ -358,7 +363,7 @@ class TradingSystem():
             if timetable == None:
                 time_expression = utils.execution_time_str(timetable = timetable, delay = delay)
                 logging.debug("Time expressione for add_job(): {}".format(time_expression))
-                blocking_sched.add_job(func = self.on_market_open, kwargs = {"timeframe" : delay, "frequency" : frequency}, max_instances = 3, **time_expression)
+                blocking_sched.add_job(func = self.on_market_open, kwargs = {"timeframe" : delay, "frequency" : frequency, "universe" : universe}, max_instances = 3, **time_expression)
             else:
                 logging.critical("Timetable is not None. NotImplemented raised.")
                 raise NotImplemented("Timetable is not None. NotImplemented raised.")
