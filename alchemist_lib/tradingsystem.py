@@ -99,6 +99,8 @@ class TradingSystem():
         self.session = Session()
 
         self.broker.set_session(session = self.session)
+
+        self.scheduler = BlockingScheduler()
         
         ts = Ts(ts_name = self.name,
                 datetime_added = dt.datetime.utcnow(),
@@ -164,8 +166,10 @@ class TradingSystem():
             frequency (int): Frequency of rebalancing.
         """
 
-        logging.info("----------------------------------------")
-        print("----------------------------------------")
+        
+        
+        logging.info("--------------------------------------------------")
+        print("--------------------------------------------------")
         
         start_time = time.time()
         datafeed.save_last_ohlcv(session = self.session, assets = universe, timeframe = timeframe)
@@ -357,17 +361,15 @@ class TradingSystem():
             if asset.instrument not in list(instrument_timetable.keys()):
                 instrument_timetable[asset.instrument] = asset.exchanges[0].timetable
         
-        blocking_sched = BlockingScheduler()
-        
         for instrument, timetable in instrument_timetable.items():
             if timetable == None:
                 time_expression = utils.execution_time_str(timetable = timetable, delay = delay)
                 logging.debug("Time expressione for add_job(): {}".format(time_expression))
-                blocking_sched.add_job(func = self.on_market_open, kwargs = {"timeframe" : delay, "frequency" : frequency, "universe" : universe}, max_instances = 3, **time_expression)
+                self.scheduler.add_job(func = self.on_market_open, kwargs = {"timeframe" : delay, "frequency" : frequency, "universe" : universe}, max_instances = 10, **time_expression)
             else:
                 logging.critical("Timetable is not None. NotImplemented raised.")
                 raise NotImplemented("Timetable is not None. NotImplemented raised.")
-        blocking_sched.start()
+        self.scheduler.start()
         
         """
         self.on_market_open(timeframe = delay, frequency = frequency)

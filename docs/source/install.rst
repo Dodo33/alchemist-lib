@@ -26,7 +26,7 @@ If the command above returns something like ``Python 3.5.2`` it's all ok. Otherw
 
 To manage software packages for Python, let’s install pip.
 ::
-    $ sudo apt-get install -y python3-pip
+    $ sudo apt-get install python3-pip
 
 A more detailed guide can be found on `Digital Ocean <https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-ubuntu-16-04>`_.
 
