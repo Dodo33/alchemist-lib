@@ -1,4 +1,4 @@
-from abc import ABC, abstractmethod
+[Bfrom abc import ABC, abstractmethod
 
 import datetime as dt
 
@@ -341,7 +341,7 @@ class TradingSystem():
         print(utils.now(), ": The rebalance function was executed in {} seconds.".format(delta_time))
 
 
-    def run(self, delay, frequency):
+    def run(self, delay, frequency = 1):
         
         """
         This method manages the "event-driven" interface. Start every method at the right time.
