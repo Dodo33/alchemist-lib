@@ -42,7 +42,7 @@ class PoloniexPopulate(PopulateBaseClass):
         """
         
         instrument = self.saver.instrument(kind = "cryptocurrency")
-        m15 = self.saver.timeframe(id = "15M", description = "five minutes")
+        m15 = self.saver.timeframe(id = "15M", description = "fifteen minutes")
         m30 = self.saver.timeframe(id = "30M", description = "thirty minutes")
         h2 = self.saver.timeframe(id = "2H", description = "two hours")
         h4 = self.saver.timeframe(id = "4H", description = "four hours")
